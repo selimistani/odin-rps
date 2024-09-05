@@ -1,0 +1,25 @@
+global object for rock paper scissor {
+    rock: 0
+    paper: 1
+    scissors: 2
+}
+
+let userScore = 0, cpuScore = 0, rounds = 0
+
+mainfunction:
+    console.log(playmatch(userChoice, computerChoice)) // Function is executed and returns the win lose or tie message, 
+    increments scores and rounds if there is no tie and
+
+function getCpuChoice
+    return random 0, 1, or 2
+    
+event listeners to all divs with classes game-option text-center, when clicked they execute function 
+userChoice and send the id of their button child element
+
+function userChoice(id of the child button as parameter):
+    return the number that the values are key for
+
+playMatch(userChoice, cpuChoice)
+{
+    
+}

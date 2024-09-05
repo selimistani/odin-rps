@@ -1,67 +1,55 @@
-let humanScore = 0, computerScore = 0, rounds = 0
+const printDict = {
+    'rock': 0,
+    'paper': 1,
+    'scissors': 2
+}
 
-while (rounds < 6) {
+// First dimension is user choice, second dimension is CPU choice.
+const messageList = [["Tie! You both pick Epstein and molest each other equally!", // Both ROCK
+    "CPU Wins! Dahmer slurps up Epstein and cuddles him with love!", // User ROCK, cpu PAPER
+    "You win! Epstein shoves the scissor down where the sun don't shine!"], // User ROCK, cpu SCISSORS
+    ["You win! Dahmer slurps up Epstein and cuddles him with love!", // User PAPER, cpu ROCK
+    "Tie! Dahmer and Dahmer roofie each other and have a nice nap!", // Both PAPER
+    "CPU Wins! The scissors beat the SHIT out of Dahmer!"], // User PAPER, cpu SCISSORS
+    ["CPU wins! Epstein shoves the scissor down where the sun don't shine!", // User SCISSORS, cpu ROCK
+    "You Win! The scissors beat the SHIT out of Dahmer!", // User SCISSORS, cpu PAPER
+    "Tie! You both picked scissors!"]] // Both SCISSORS
+
+let userScore = 0, cpuScore = 0, roundCount = 0;
+
+const options = document.querySelectorAll(".btn");
+
+const resultMessage = document.querySelector("#result-message")
+const userScoreElement = document.querySelector("#user-score")
+const cpuScoreElement = document.querySelector("#cpu-score")
+
+options.forEach(option => {
+    option.addEventListener('mousedown', () => {
+        playRound(option.id);
+    });
+});
+
+function playRound(userChoice) {
+    userChoice = printDict[userChoice]
+    let cpuChoice = getCpuChoice()
+
+    if ((userChoice - cpuChoice) % 3 == 1) // Modular arithmetic, user wins
+    {
+        userScore++;
+        roundCount++;
+    }
+    else if ((userChoice - cpuChoice) % 3 == 2) // CPU win
+    {
+        cpuScore++;
+        roundCount++;
+    }
+
+    resultMessage.textContent = messageList[userChoice][cpuChoice]
     
-    if (rounds === 5) {
-        let winner = (humanScore > computerScore) ? "Player" : "CPU"
-        tempInput = prompt(`Game over! ${winner} victory! Type [Y/y] to play again!`, 'y')
-        if (tempInput.toLowerCase() !== 'y') {
-            throw new Error("User stopped script.");
-        }
-        humanScore = 0, computerScore = 0, rounds = 0;
-    }
-
-    playRound(getHumanChoice(), getComputerChoice())
-    rounds++;
-    console.log(`Player ${humanScore} - ${computerScore} CPU`)
-
+    cpuScoreElement.textContent = cpuScore
+    userScoreElement.textContent = userScore
 }
 
-function getComputerChoice() {
-    return Math.floor(Math.random() * 3)
-}
-
-function getHumanChoice() {
-    validChoices = ['rock', 'paper', 'scissors']
-    humanChoice = prompt(`Choose between ${validChoices}`, '').toLowerCase().trim()
-    while (!validChoices.includes(humanChoice)) {
-        console.log("Invalid choice")
-        humanChoice = prompt(`Choose between ${validChoices}`, '').toLowerCase().trim()
-    }
-    return validChoices.indexOf(humanChoice)
-}
-
-function playRound(humanChoice, computerChoice) {
-    
-    printValues = {
-        0: "Rock",
-        1: "Paper",
-        2: "Scissors"
-    };
-
-    if (humanChoice === computerChoice) {
-        console.log(`Both picked ${printValues[humanChoice]}, tie!`)
-        return
-        rounds--;
-    }
-    else if (humanChoice > computerChoice && humanChoice !== 2) {
-        console.log(`You win this round, ${printValues[humanChoice]} beats ${printValues[computerChoice]}!`)
-        humanScore++;
-        return
-    }
-    else if (computerChoice > humanChoice && computerChoice !== 2) {
-        console.log(`You lose this round, ${printValues[computerChoice]} beats ${printValues[humanChoice]}!`)
-        computerScore++;
-        return
-    }
-    else if (humanChoice === 2) {
-        console.log(`You win this round, ${printValues[humanChoice]} beats ${printValues[computerChoice]}!`)
-        humanScore++;
-        return
-    }
-    else {
-        console.log(`You lose this round, ${printValues[computerChoice]} beats ${printValues[humanChoice]}!`)
-        computerScore++;
-        return        
-    }
+function getCpuChoice() {
+    return Math.floor(Math.random() * 3);
 }

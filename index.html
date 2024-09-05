@@ -1,13 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
-    <title>RPS</title>
-</head>
-<body>
-    Press F12, play through the console
-</body>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rock Paper Scissors - Fun Twist</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <script defer src="script.js"></script>
+    </head>
+
+    <body>
+        <div class="container text-center mt-5">
+            <h1>ROCK PAPER SCISSORS</h1>
+            <p class="lead">...with a little fun jeffry-cal twist! Best of 5, ties don't count!</p>
+
+            <!-- Scoreboard Container -->
+            <div class="d-flex justify-content-around align-items-center score-container mb-4">
+                <div class="score-box">
+                    <h2>User Score</h2>
+                    <span id="user-score" class="score">0</span>
+                </div>
+                <div class="score-box">
+                    <h2>CPU Score</h2>
+                    <span id="cpu-score" class="score">0</span>
+                </div>
+            </div>
+
+            <!-- Message Container for victory/loss -->
+            <div id="result-message" class="result-message mb-4">
+                <!-- Message will be updated here after each round -->
+            </div>
+
+            <!-- Buttons Container -->
+            <div class="d-flex justify-content-around game-container">
+                    
+                <button id="rock" class="btn">
+                    <img src="https://purepng.com/public/uploads/large/jeffrey-epstein-0zm.png" alt="Rock" style="object-fit: cover; object-position: top;">
+                    <p>Rock</p>
+                </button>
+
+                <button id="paper" class="btn">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d0d5f274-3b4b-4928-a7e2-824dbe366732/dgoixxy-af93113a-be25-4823-8032-d721d16566af.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QwZDVmMjc0LTNiNGItNDkyOC1hN2UyLTgyNGRiZTM2NjczMlwvZGdvaXh4eS1hZjkzMTEzYS1iZTI1LTQ4MjMtODAzMi1kNzIxZDE2NTY2YWYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.3jhOkcpERcbRUIUlv0ZqZ2BLV8aTFD5Ch4Mpk885OFw" alt="Paper">
+                    <p>Paper</p>
+                </button>
+
+                <button id="scissors" class="btn">
+                    <img src="https://t4.ftcdn.net/jpg/05/22/90/65/360_F_522906520_lkyPCNWpaEehCvjTcKchUEp6VxYlH26l.png" alt="Scissors" style="object-fit: cover; object-position: 45% 50%">
+                    <p>Scissors</p>
+                </button>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+
 </html>
