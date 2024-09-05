@@ -38,16 +38,23 @@ function playRound(userChoice) {
         userScore++;
         roundCount++;
     }
-    else if ((userChoice - cpuChoice) % 3 == 2) // CPU win
-    {
+    else if (!(userChoice == cpuChoice)) {
         cpuScore++;
-        roundCount++;
+        roundCount++;    
     }
 
     resultMessage.textContent = messageList[userChoice][cpuChoice]
     
     cpuScoreElement.textContent = cpuScore
     userScoreElement.textContent = userScore
+
+    if (roundCount > 4) {
+        winner = (userScore > cpuScore) ? "You win!" : "CPU wins!"
+        resultMessage.textContent = winner + " Scores are now reset!"
+        userScore = 0;
+        cpuScore = 0;
+        roundCount = 0;
+    }
 }
 
 function getCpuChoice() {
